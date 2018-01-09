@@ -16,10 +16,10 @@ function preload(list, cb) {
 }
 function setupSw() {
   try {
-    if (localStorage.sw) {
+    if (localStorage.sw && Date.now() - localStorage.sw < 1800 * 100) {
       return;
     }
-    localStorage.sw = 1;
+    localStorage.sw = Date.now();
   } catch (err) {
     return;
   }
